@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Image from './Image';
 
+const images = []
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <h1 className="heading">Softtech Image Gallery Case</h1>
+        <button onClick={()=> alert('hi')}>Upload</button>
+        <div className="gallery">
+          {images.map(image => <Image src={image} />)}
+        </div>
+      </div>
     </div>
   );
 }
