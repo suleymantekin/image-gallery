@@ -12,6 +12,7 @@ function UploadInput({ onChange = () => null }) {
         type="file"
         accept="image/*"
         onChange={onChange}
+        multiple
       />
     </>
   );
