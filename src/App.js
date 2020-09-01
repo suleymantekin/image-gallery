@@ -1,16 +1,24 @@
-import React from 'react';
-import './App.css';
-import Image from './Image';
+import React from "react";
+import "./App.css";
+import Image from "./components/Image";
+import useMobileDetection from "./hooks/useMobileDetection";
 
-const images = []
+const images = [];
 function App() {
+  const { isMobile } = useMobileDetection();
   return (
     <div className="App">
       <div className="container">
         <h1 className="heading">Softtech Image Gallery Case</h1>
-        <button onClick={()=> alert('hi')}>Upload</button>
+        {isMobile ? (
+          <button onClick={() => alert("hi")}>Upload</button>
+        ) : (
+          <div>Dropbox</div>
+        )}
         <div className="gallery">
-          {images.map(image => <Image src={image} />)}
+          {images.map((image) => (
+            <Image src={image} />
+          ))}
         </div>
       </div>
     </div>
