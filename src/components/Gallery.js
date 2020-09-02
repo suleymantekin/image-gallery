@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { motion, AnimateSharedLayout } from "framer-motion";
 import Image from "./Image";
 import "../App.css";
 

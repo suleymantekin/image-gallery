@@ -1,11 +1,15 @@
 :root {
   font-size: 10px;
+  --light-blue: rgb(0, 135, 247);
+  --border-radius-size: 0.5rem;
+  --font-size: 1.6rem;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -20,12 +24,11 @@ body {
 }
 
 .heading {
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 500;
   line-height: 1.5;
   text-align: center;
-  padding: 3.5rem 0;
+  padding: 1.5rem 0 0 0;
   color: #1a1a1a;
 }
 
@@ -44,6 +47,7 @@ body {
   margin: 1rem;
   box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  border-radius: var(--border-radius-size);
 }
 
 .gallery-image {
@@ -77,8 +81,8 @@ body {
 
 .dropzone {
   background: white;
-  border-radius: 5px;
-  border: 2px dashed rgb(0, 135, 247);
+  border-radius: var(--border-radius-size);
+  border: 2px dashed var(--light-blue);
   border-image: none;
   max-width: 500px;
   padding: 50px;
@@ -86,7 +90,7 @@ body {
 }
 
 .dropzone p {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 input[type="file"] {
@@ -94,9 +98,16 @@ input[type="file"] {
 }
 
 .custom-input {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
-  margin: 2rem;
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid var(--light-blue);
+  background-color: white;
+  border-radius: var(--border-radius-size);
+  padding: 1rem 1.5rem;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  font-size: var(--font-size);
+  color: var(--light-blue);
+  transition-duration: 0.25s;
 }

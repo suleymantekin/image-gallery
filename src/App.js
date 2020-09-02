@@ -12,10 +12,10 @@ function App() {
   const [images, setImages] = React.useState([]);
 
   React.useEffect(() => {
-    fetch(API + "gallery")
+    fetch(`${API}/gallery`)
       .then((response) => response.json())
       .then((data) => {
-        let imageUrls = data.map((url) => API + url).reverse();
+        let imageUrls = data.map((url) => `${API}/${url}`).reverse();
         setImages(imageUrls);
       });
   }, []);
@@ -30,7 +30,7 @@ function App() {
       formData.append("images", acceptedFiles[i]);
     }
     setIsLoading(true);
-    fetch(API + "uploadmultiple", {
+    fetch(`${API}/uploadmultiple`, {
       method: "POST",
       body: formData,
     })
@@ -38,7 +38,7 @@ function App() {
       .then((data) => {
         setIsLoading(false);
         setImages((prevImages) => {
-          return [...data.map((item) => API + item.path), ...prevImages];
+          return [...data.map((item) => `${API}/${item.path}`), ...prevImages];
         });
         console.log(data);
       })
