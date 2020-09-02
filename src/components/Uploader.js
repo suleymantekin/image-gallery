@@ -6,12 +6,12 @@ import Dropzone from "./Dropzone";
 import Error from "./Error";
 const API = process.env.REACT_APP_API_URL;
 
-function Uploader({ images = [], setImages }) {
+function Uploader({ setImages }) {
   const { isMobile } = useMobileDetection();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const createFormDate = (acceptedFiles) => {
+  const createFormData = (acceptedFiles) => {
     const formData = new FormData();
     for (let i = 0; i < acceptedFiles.length; i++) {
       formData.append("images", acceptedFiles[i]);
@@ -24,7 +24,7 @@ function Uploader({ images = [], setImages }) {
       if (!acceptedFiles) {
         return;
       }
-      const formData = createFormDate(acceptedFiles);
+      const formData = createFormData(acceptedFiles);
       setIsLoading(true);
       setError("");
       fetch(`${API}/uploadmultiple`, {
@@ -34,11 +34,9 @@ function Uploader({ images = [], setImages }) {
         .then((response) => response.json())
         .then((data) => {
           setIsLoading(false);
-          setImages((prevImages) => {
-            return [
-              ...data.map((item) => `${API}/${item.path}`),
-              ...prevImages,
-            ];
+          const newImageUrls = data.map((item) => `${API}/${item.path}`);
+          setImages((prevImageUrls) => {
+            return [...newImageUrls, ...prevImageUrls];
           });
         })
         .catch(() => {
