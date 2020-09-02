@@ -6,7 +6,7 @@ function Image({ src = "", alt = "" }) {
   return (
     <AnimatePresence>
       <motion.div className="gallery-item" layout>
-        <img src={src} className="gallery-image" />
+        <img src={src} className="gallery-image" alt={alt} />
       </motion.div>
     </AnimatePresence>
   );

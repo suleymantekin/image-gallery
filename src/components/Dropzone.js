@@ -1,7 +1,7 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
 
-function Dropzone({ onDrop }) {
+function Dropzone({ onDrop = () => null, isLoading = false }) {
   const {
     getRootProps,
     getInputProps,
@@ -14,8 +14,10 @@ function Dropzone({ onDrop }) {
 
   return (
     <div {...getRootProps()} className="dropzone">
-      <input {...getInputProps()} />
-      {isDragReject ? (
+      <input {...getInputProps()} disabled={isLoading} />
+      {isLoading ? (
+        <p>Uploading...</p>
+      ) : isDragReject ? (
         <p>Some files will be rejected</p>
       ) : isDragActive ? (
         <p>Drop the files here ...</p>

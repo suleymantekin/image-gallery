@@ -1,17 +1,18 @@
 import React from "react";
 import "../App.css";
 
-function UploadInput({ onChange = () => null }) {
+function UploadInput({ onChange = () => null, isLoading = false }) {
   return (
     <>
       <label htmlFor="gallery-input" className="custom-input">
-        Upload a photo
+        {isLoading ? "Uploading..." : "Upload a photo"}
       </label>
       <input
         id="gallery-input"
         type="file"
         accept="image/*"
-        onChange={onChange}
+        onChange={(event) => onChange(event.target.files)}
+        disabled={isLoading}
         multiple
       />
     </>

@@ -54,9 +54,9 @@ function App() {
         <h1 className="heading">Softtech Image Gallery Case</h1>
 
         {isMobile ? (
-          <UploadInput onChange={(event) => uploadPhoto(event.target.files)} />
+          <UploadInput onChange={uploadPhoto} isLoading={isLoading} />
         ) : (
-          <Dropzone onDrop={uploadPhoto} />
+          <Dropzone onDrop={uploadPhoto} isLoading={isLoading} />
         )}
         <Gallery images={images} />
       </div>
