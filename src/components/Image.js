@@ -1,11 +1,14 @@
 import React from "react";
 import "../App.css";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Image({ src = "", alt = "" }) {
   return (
-    <div className="gallery-item">
-      <img className="gallery-image" src={src} alt={alt} />
-    </div>
+    <AnimatePresence>
+      <motion.div className="gallery-item" layout>
+        <img src={src} className="gallery-image" />
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
